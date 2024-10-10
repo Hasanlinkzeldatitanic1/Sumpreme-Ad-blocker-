@@ -1,0 +1,57 @@
+{
+  "manifest_version": 2,
+  "name": "My Firefox Addon",
+  "version": "1.0",
+  "description": "A simple Firefox addon example.",
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+} 
+
+chrome.runtime.onInstalled.addListener(() => {
+  console.log("Addon installed!");
+});
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Hello, Firefox!</h1>
+  <button id="myButton">Click me!</button>
+  <script src="popup.js"></script>
+</body>
+</html>
+
+document.getElementById('myButton').addEventListener('click', () => {
+  alert('Button was clicked!');
+});
+body {
+  font-family: Arial, sans-serif;
+  width: 200px;
+}
+h1 {
+  font-size: 16px;
+}
+button {
+  padding: 10px;
+  cursor: pointer;
+}
+
